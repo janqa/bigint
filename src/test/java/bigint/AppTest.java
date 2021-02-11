@@ -19,19 +19,19 @@ class AppTest {
     }
 
     public static int iterate(BigInteger x, int i) {
-        if (even(x)) {
-            x = x.divide(BigInteger.TWO);
-        } else if (asd(x) > 0) {
-            x = x.add(BigInteger.ONE);
-        } else {
-            x = x.subtract(BigInteger.ONE);
-        }
-        System.out.println(x);
-
-        if (!x.equals(BigInteger.ONE)) {
-            return iterate(x, ++i);
-        } else
+        if (x.equals(BigInteger.ONE)) {
             return i;
+        } else {
+            if (even(x)) {
+                x = x.divide(BigInteger.TWO);
+            } else if (asd(x) > 0) {
+                x = x.add(BigInteger.ONE);
+            } else {
+                x = x.subtract(BigInteger.ONE);
+            }
+            System.out.println(x);
+            return iterate(x, ++i);
+        }
     }
 
     private static int asd(BigInteger x) {
