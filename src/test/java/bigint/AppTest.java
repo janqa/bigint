@@ -4,14 +4,16 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
+import java.util.stream.IntStream;
 
 class AppTest {
-    public static final BigInteger BIIIG = BigInteger.TEN.pow(309);
-    public static final BigInteger BIIIG2 = new BigInteger("33");
+    public static final BigInteger BIIIG = BigInteger.TWO.pow(309);
+    public static final BigInteger BIIIG2 = new BigInteger("3");
     public static final double LOG2 = Math.log(2);
 
     @Test public void testFlux() {
-        System.out.println("ok, the answer is " + solve(BIIIG2));
+        IntStream.range(1, 30).mapToObj(BigInteger::valueOf).map(this::solve).forEach(System.out::println);
+        System.out.println("ok, the answer is " + solve(BIIIG));
 
     }
 
@@ -32,7 +34,6 @@ class AppTest {
             } else {
                 x = x.subtract(BigInteger.ONE);
             }
-            System.out.println(x);
             return iterate(x, ++i);
         }
     }
