@@ -38,8 +38,12 @@ class AppTest {
     }
 
     private static int asd(BigInteger x) {
-        BigInteger m = BigInteger.TWO.pow((int) (Math.log(x.doubleValue()) / LOG2));
+        BigInteger m = BigInteger.TWO.pow((int) log2(x));
         return x.subtract(m).compareTo(m.multiply(BigInteger.TWO).subtract(x));
+    }
+
+    private static double log2(BigInteger x) {
+        return Math.log(x.doubleValue()) / LOG2;
     }
 
     public static boolean even(BigInteger x) {
