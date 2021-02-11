@@ -1,12 +1,14 @@
 package bigint;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
 
 class AppTest {
     public static final BigInteger BIIIG = BigInteger.TEN.pow(309);
-    public static final BigInteger BIIIG2 = new BigInteger("15");
+    public static final BigInteger BIIIG2 = new BigInteger("33");
+    public static final double LOG2 = Math.log(2);
 
     @Test public void testFlux() {
         System.out.println("ok, the answer is " + solve(BIIIG2));
@@ -14,6 +16,7 @@ class AppTest {
     }
 
     public int solve(BigInteger x) {
+        Assertions.assertTrue(asd(BigInteger.valueOf(33)) < 0);
         int i = 0;
         return iterate(x, i);
     }
@@ -35,7 +38,7 @@ class AppTest {
     }
 
     private static int asd(BigInteger x) {
-        BigInteger m = BigInteger.TWO.pow((int) Math.log(x.doubleValue()));
+        BigInteger m = BigInteger.TWO.pow((int) (Math.log(x.doubleValue()) / LOG2));
         return x.subtract(m).compareTo(m.multiply(BigInteger.TWO).subtract(x));
     }
 
